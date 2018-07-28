@@ -9,7 +9,7 @@ const themeDefault = getMuiTheme({
   },
   appBar: {
     height: 57,
-    color: transparent,
+    color: '#4c4c4c',
   },
   flatButton: {
     textTransform: 'none',

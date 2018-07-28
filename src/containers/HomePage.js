@@ -7,21 +7,17 @@ import BannerSearch from '../components/HomePage/BannerSearch';
 import UniversityBanner from '../components/HomePage/UniversityBanner';
 import Footer from '../components/Common/Footer';
 
-class App extends React.Component {
+class HomePage extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={ThemeDefault}>
         <div>
-          <Header/>
           <BannerSearch/>
           <UniversityBanner />
-          <Footer/>
         </div>
-      </MuiThemeProvider>
     );
   }
 }
 
 
-export default withWidth()(App);
+export default withWidth()(HomePage);
