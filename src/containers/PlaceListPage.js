@@ -11,23 +11,15 @@ class PlaceListPage extends React.Component {
             wrapper: {
                 outDiv: {
                     width: '100%',
-                    position: 'absolute'
+                    position: 'relative',
                 },
                 nestDiv: {
                     width: '65%',
                     marginLeft: 'auto',
                     marginRight: 'auto',
-                    position: 'related',
+                    position: 'relative',
+                    display: 'flex',
                 },
-                breadcumb: {
-                    
-                },
-                leftSide: {
-
-                },
-                mainList: {
-
-                }
             }
         }
 
@@ -38,9 +30,10 @@ class PlaceListPage extends React.Component {
                     <LeftSide/>
                     <MainList/>
                 </div>
+
             </div>
         );
     };
 };
 
-export default withWidth()(PlaceListPage);
+export default PlaceListPage;

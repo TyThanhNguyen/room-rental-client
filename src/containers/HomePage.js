@@ -20,4 +20,4 @@ class HomePage extends React.Component {
 }
 
 
-export default withWidth()(HomePage);
+export default HomePage;

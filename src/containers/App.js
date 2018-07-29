@@ -57,4 +57,4 @@ App.propTypes = {
     children: PropTypes.element,
 }
 
-export default withWidth()(App);
+export default App;

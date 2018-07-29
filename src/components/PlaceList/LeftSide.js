@@ -65,7 +65,6 @@ class LeftSide extends React.Component {
         const styles = {
             aside: {
                 width: '23%',
-                float: 'left',
                 position: 'relative'
             },
             div: {

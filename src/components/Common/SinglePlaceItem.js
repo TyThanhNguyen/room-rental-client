@@ -261,7 +261,7 @@ class SinglePlaceItem extends React.Component {
                     color: '#4c4c4c',
                     fontSize: '1rem',
                     lineHeight: '1.5rem',
-                    fontWeight: 400,
+                    fontWeight: 550,
                     textAlign: 'right',
                     paddingRight: 5
                 },

@@ -9,9 +9,7 @@ class MainList extends React.Component {
         const styles = {
             section: {
                 width: '77%',
-                float: 'right',
                 position: 'relative',
-                height: 500
             },
             wrapper: {
                 width: '90%',
