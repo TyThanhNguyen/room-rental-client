@@ -1,12 +1,43 @@
 import React from 'react';
 import withWidth from 'material-ui/utils/withWidth';
-import { blue100 } from '../../node_modules/material-ui/styles/colors';
+import Breadcumb from '../components/Common/Breadcumb';
+import LeftSide from '../components/PlaceList/LeftSide';
+import MainList from '../components/PlaceList/MainList';
 
 class PlaceListPage extends React.Component {
     render() {
+
+        const styles = {
+            wrapper: {
+                outDiv: {
+                    width: '100%',
+                    position: 'absolute'
+                },
+                nestDiv: {
+                    width: '65%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    position: 'related',
+                },
+                breadcumb: {
+                    
+                },
+                leftSide: {
+
+                },
+                mainList: {
+
+                }
+            }
+        }
+
         return (
-            <div>
-                <h1 style={{backgroundColor: blue100, height: 400}}>hello placelist</h1>
+            <div style={styles.wrapper.outDiv}>
+                <Breadcumb/>
+                <div style={styles.wrapper.nestDiv}>
+                    <LeftSide/>
+                    <MainList/>
+                </div>
             </div>
         );
     };

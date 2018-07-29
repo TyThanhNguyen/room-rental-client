@@ -16,6 +16,15 @@ const themeDefault = getMuiTheme({
     textColor: white,
     fontSize: '1rem',
   },
+  slider: {
+    trackColor: '#c8c9cb',
+    selectionColor: '#8E24AA',
+    handleSize: 25,
+    trackSize: 6,
+  },
+  fontAwesomeIcon: {
+    color: '#D500F9'
+  }
 });
 
 

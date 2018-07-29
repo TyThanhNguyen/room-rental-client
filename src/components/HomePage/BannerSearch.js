@@ -81,7 +81,7 @@ const BannerSearch = () => {
     },
     searchFlatButton: {
       height: '100%',
-      backgroundColor: 'purple'
+      backgroundColor: '#8E24AA'
     },
     searchIconWrap: {
       backgroundColor: 'white'

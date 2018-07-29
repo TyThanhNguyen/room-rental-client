@@ -12,6 +12,7 @@ class App extends React.Component {
     }
 
     componentWillReceiveProps() {
+        console.log('run1')
         if (this.props.location.pathname === '/') {
             this.setState({
                 isInHomePage: false
@@ -20,6 +21,14 @@ class App extends React.Component {
             this.setState({
                 isInHomePage: true
             })
+        }
+    }
+
+    componentWillMount() {
+        if (this.state.isInHomePage === true && this.props.location.pathname !== '/') {
+            this.setState({
+                isInHomePage: false
+            });
         }
     }
 
