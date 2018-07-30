@@ -2,6 +2,7 @@ import React from 'react';
 import {GridList, GridTile} from 'material-ui/GridList';
 import getImage from '../../utils/importImages';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
+import {Link} from 'react-router';
 
 
 
@@ -126,6 +127,14 @@ class UniversityBanner extends React.Component {
                 style={styles.gridList}
             >
             {universityData.map((tile) => (
+              <Link 
+                to={{
+                  pathname: `${tile.title}`,
+                  state: {
+                    title: tile.title
+                  }
+                }}
+              >
                 <GridTile
                     style={styles.gridTile}
                     key={tile.img}
@@ -135,6 +144,7 @@ class UniversityBanner extends React.Component {
                     >
                     <img src={getImage(tile.img)} />
                 </GridTile>
+              </Link>
             ))}   
             </GridList>
         </div>

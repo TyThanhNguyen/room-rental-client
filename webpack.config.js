@@ -7,13 +7,14 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        rules: [{
-            test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2|eot)$/,
+        rules: [
+            {
+            test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2|eot)$/,
             use: [
-                // 'url-loader',
                 'file-loader'
             ]
-        }, {
+        },
+         {
             loader: 'babel-loader',
             test: /\.js$/,
             exclude: /node_modules/

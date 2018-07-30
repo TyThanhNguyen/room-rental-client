@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import getImage from '../../utils/importImages';
 import { FlatButton } from 'material-ui';
 import {Link} from 'react-router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWalking, faQuestionCircle, faBus, faCar, faMap, faReceipt } from '@fortawesome/free-solid-svg-icons'
+import uni01 from '../../images/uni01.jpg'
 
 class SinglePlaceItem extends React.Component {
     render() {
         const placeListData = [
             {
-                img: 'uni01',
+                img: 'uni01.jpg',
                 details: {
                     placeName: 'Blk 12 Lorong 8',
                     rank: '8.0',
@@ -30,7 +31,7 @@ class SinglePlaceItem extends React.Component {
                 }
             },
             {
-                img: 'uni01',
+                img: 'uni01.jpg',
                 details: {
                     placeName: 'Blk 12 Lorong 8',
                     rank: '8.0',
@@ -51,7 +52,7 @@ class SinglePlaceItem extends React.Component {
                 }
             },
             {
-                img: 'uni01',
+                img: 'uni01.jpg',
                 details: {
                     placeName: 'Blk 12 Lorong 8',
                     rank: '8.0',
@@ -72,7 +73,7 @@ class SinglePlaceItem extends React.Component {
                 }
             },
             {
-                img: 'uni01',
+                img: 'uni01.jpg',
                 details: {
                     placeName: 'Blk 12 Lorong 8',
                     rank: '8.0',
@@ -93,7 +94,7 @@ class SinglePlaceItem extends React.Component {
                 }
             },
             {
-                img: 'uni01',
+                img: 'uni01.jpg',
                 details: {
                     placeName: 'Blk 12 Lorong 8',
                     rank: '8.0',
@@ -114,7 +115,7 @@ class SinglePlaceItem extends React.Component {
                 }
             },,
             {
-                img: 'uni01',
+                img: 'uni01.jpg',
                 details: {
                     placeName: 'Blk 12 Lorong 8',
                     rank: '8.0',
@@ -135,7 +136,7 @@ class SinglePlaceItem extends React.Component {
                 }
             },
             {
-                img: 'uni01',
+                img: 'uni01.jpg',
                 details: {
                     placeName: 'Blk 12 Lorong 8',
                     rank: '8.0',
@@ -165,6 +166,10 @@ class SinglePlaceItem extends React.Component {
             },
             ul: {
                 display: 'flex',
+            },
+            link: {
+                color: '#4c4c4c',
+                textDecoration: 'none'
             },
             imgDiv: {
                 div: {
@@ -265,10 +270,9 @@ class SinglePlaceItem extends React.Component {
                     textAlign: 'right',
                     paddingRight: 5
                 },
-
             }
         }
-
+        const {university} = this.props;
         return (
             <div>
                 {
@@ -276,13 +280,29 @@ class SinglePlaceItem extends React.Component {
                         return (
                             <div style={styles.wrapper}>
                                 <div style={styles.imgDiv.div}>
-                                    <Link>
-                                        <img style={styles.imgDiv.img} src={getImage(place.img)}/>
+                                    <Link to={{
+                                        pathname: `${university}/${place.details.placeName}`,
+                                        state: {
+                                            university,
+                                            placePath: `${university} / ${place.details.placeName}`
+                                        }
+                                    }}>
+                                        {/* <img style={styles.imgDiv.img} src={getImage(place.img)}/> */}
+                                        <img style={styles.imgDiv.img} src={require(`../../images/${place.img}`)}/>
                                     </Link>
                                 </div>
                                 <div style={styles.placeDiv.div}>
                                     <ul>
-                                        <li style={styles.placeDiv.placeName}>{place.details.placeName}</li>
+                                        <li style={styles.placeDiv.placeName}>
+                                            <Link
+                                                style={styles.link}
+                                                to={{
+                                                    pathname: `${university}/${place.details.placeName}`
+                                                }}
+                                            >
+                                                {place.details.placeName}
+                                            </Link>
+                                        </li>
                                         <ul style={styles.ul}>
                                             <li style={styles.placeDiv.rank}>Rate: </li>
                                             <li style={styles.placeDiv.rankValue}>{place.details.rank}</li>
@@ -309,11 +329,13 @@ class SinglePlaceItem extends React.Component {
                                         <li style={styles.viewRoomDiv.from}>From</li>
                                         <li style={styles.viewRoomDiv.price}>{place.details.price}</li>
                                         <li>
-                                            <FlatButton
-                                                style={styles.viewRoomDiv.viewBtn}
-                                                labelStyle={styles.viewRoomDiv.label}
-                                                label="View Rooms"
-                                            />
+                                            <Link to="">
+                                                <FlatButton
+                                                    style={styles.viewRoomDiv.viewBtn}
+                                                    labelStyle={styles.viewRoomDiv.label}
+                                                    label="View Rooms"
+                                                />
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -325,5 +347,9 @@ class SinglePlaceItem extends React.Component {
         );
     }
 };
+
+SinglePlaceItem.propTypes = {
+    university: PropTypes.string
+}
 
 export default SinglePlaceItem;

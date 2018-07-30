@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import AutoCompleteSearchBox from './AutoCompleteSearchBox';
 import FilterOption from './FitlterOption';
 import SinglePlaceItem from '../Common/SinglePlaceItem';
 
 class MainList extends React.Component {
-    
     render () {
+        const {university} = this.props;
         const styles = {
             section: {
                 width: '77%',
@@ -32,11 +32,15 @@ class MainList extends React.Component {
                         <AutoCompleteSearchBox/>
                         <FilterOption/>
                     </div>
-                    <SinglePlaceItem/>
+                    <SinglePlaceItem university={university}/>
                 </div>
             </section>
         );
     }
 };
+
+MainList.propTypes = {
+    university: PropTypes.string
+}
 
 export default MainList;

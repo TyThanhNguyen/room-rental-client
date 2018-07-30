@@ -7,6 +7,7 @@ class Header extends React.Component {
 
   render() {
     const {styles} = this.props;
+
     const style = {
       appBar:{
         div: {

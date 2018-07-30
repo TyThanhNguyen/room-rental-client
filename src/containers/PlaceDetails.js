@@ -1,13 +1,15 @@
 import React, {PropTypes} from 'react';
 import Breadcumb from '../components/Common/Breadcumb';
-import LeftSide from '../components/PlaceList/LeftSide';
-import MainList from '../components/PlaceList/MainList';
-import Header from '../components/Common/Header';
+import Slider_Wishlist from '../components/PlaceDetails/Slider_Wishlist';
+import NavBar from '../components/PlaceDetails/NavBar';
+import About from '../components/PlaceDetails/About';
+import RoomOption from '../components/PlaceDetails/RoomOption';
+import Property from '../components/PlaceDetails/Property';
+import Header from '../components/Common/Header'
 
-class PlaceListPage extends React.Component {
+class PlaceDetails extends React.Component {
     render() {
-        const {title} = this.props.location.state
-
+        const {placePath} = this.props.location.state;
         const styles = {
             header: {
                 backgroundColor: '#4c4c4c'
@@ -25,23 +27,24 @@ class PlaceListPage extends React.Component {
                 },
             }
         }
-
         return (
             <div style={styles.wrapper.outDiv}>
                 <Header styles={styles.header}/>
-                <Breadcumb path={title}/>
+                <Breadcumb path={placePath}/>
                 <div style={styles.wrapper.nestDiv}>
-                    <LeftSide/>
-                    <MainList university={title}/>
+                    <Slider_Wishlist/>
                 </div>
-
+                <NavBar/>
+                <About/>
+                <RoomOption/>
+                <Property/>
             </div>
         );
-    };
-};
-
-PlaceListPage.propTypes = {
-    title: PropTypes.string
+    }
 }
 
-export default PlaceListPage;
+PlaceDetails.propTypes = {
+    university: PropTypes.string
+}
+
+export default PlaceDetails;

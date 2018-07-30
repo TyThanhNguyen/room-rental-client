@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
 class Breadcumb extends React.Component {
     render() {
+        const {path}  = this.props;
+
         const styles = {
             breadcumb: {
                 section: {
@@ -38,12 +40,16 @@ class Breadcumb extends React.Component {
                 <div style={styles.breadcumb.div}>
                     <p style={styles.breadcumb.home}>Home /</p>
                     <Link to="" style={styles.breadcumb.schoolName}>
-                        <p>Informatics Academy</p>
+                        <p>{path}</p>
                     </Link>
                 </div>
             </section>
         );
     };
-};
+};  
+
+Breadcumb.propTypes = {
+    path: PropTypes.string    
+}
 
 export default Breadcumb;
