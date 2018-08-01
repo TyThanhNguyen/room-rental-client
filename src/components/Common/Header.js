@@ -29,18 +29,19 @@ class Header extends React.Component {
               title={<span style={style.title}>Logo</span>}
               iconElementRight={
                 <div>
-                  <FlatButton 
-                    hoverColor="transparent"
-                    rippleColor="transparent"
-                    style={style.appBar.flatButton}
-                    label="Become a host" />
-
+                  <Link to="/hostdashboard">
+                    <FlatButton 
+                      hoverColor="transparent"
+                      rippleColor="transparent"
+                      style={style.appBar.flatButton}
+                      label="Become a host" />
+                  </Link>
                   <FlatButton 
                     hoverColor="transparent"
                     rippleColor="transparent"
                     
                     label="Help" />
-                  <Link to="/placelist">
+                  <Link to="">
                     <FlatButton 
                       hoverColor="transparent"
                       rippleColor="transparent"

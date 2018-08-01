@@ -9,6 +9,8 @@ import {cyan600, pink600, purple600} from 'material-ui/styles/colors';
 import ExpandLess from 'material-ui/svg-icons/navigation/expand-less';
 import ExpandMore from 'material-ui/svg-icons/navigation/expand-more';
 import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faColumns, faHome, faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 
 const data = {
   menus: [
@@ -22,6 +24,12 @@ const data = {
     { text: 'Places', icon: <Place/>, link: '/place' },
     { text: 'Rooms', icon: <GridOn/>, link: '/room' },
     { text: 'Login Page', icon: <PermIdentity/>, link: '/login' }
+  ],
+  hostDashboardMenu: [
+    { text: 'DashBoard', icon: <FontAwesomeIcon icon={faColumns}/>, link: '/hostdashboard' },
+    { text: 'Place', icon: <FontAwesomeIcon icon={faHome}/>, link: '/hostdashboard/place' },
+    { text: 'Room', icon: <GridOn/>, link: '/hostdashboard/room' },
+    { text: 'Booking', icon: <FontAwesomeIcon icon={faShoppingCart}/>, link: '/hostdashboard/booking' },
   ],
   tablePage: {
     items: [

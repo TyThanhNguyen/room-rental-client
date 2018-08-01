@@ -287,7 +287,6 @@ class SinglePlaceItem extends React.Component {
                                             placePath: `${university} / ${place.details.placeName}`
                                         }
                                     }}>
-                                        {/* <img style={styles.imgDiv.img} src={getImage(place.img)}/> */}
                                         <img style={styles.imgDiv.img} src={require(`../../images/${place.img}`)}/>
                                     </Link>
                                 </div>

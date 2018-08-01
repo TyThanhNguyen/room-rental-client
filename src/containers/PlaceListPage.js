@@ -6,8 +6,9 @@ import Header from '../components/Common/Header';
 
 class PlaceListPage extends React.Component {
     render() {
-        const {title} = this.props.location.state
-
+        // const {title} = this.props.location.state
+        const title = "whatever"
+        console.log('@123');
         const styles = {
             header: {
                 backgroundColor: '#4c4c4c'
