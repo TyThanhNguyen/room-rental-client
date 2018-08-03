@@ -68,12 +68,12 @@ class NavBar extends React.Component {
                     <li style={styles.li}>
                         <FlatButton label="Reviews" rippleColor='white' style={styles.flatBtn} />
                     </li>
-                    <li style={styles.viewRoomWrapper}>
+                    {/* <li style={styles.viewRoomWrapper}>
                         <FlatButton 
                             style={styles.viewBtn}
                             labelStyle={styles.viewBtnLabel}
                             label="View Rooms"/>
-                    </li>
+                    </li> */}
                 </ul>
             </nav>
         );

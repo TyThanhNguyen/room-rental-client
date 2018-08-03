@@ -5,7 +5,7 @@ import SinglePlaceItem from '../Common/SinglePlaceItem';
 
 class MainList extends React.Component {
     render () {
-        const {university} = this.props;
+        const {university, placeList} = this.props;
         const styles = {
             section: {
                 width: '77%',
@@ -32,7 +32,7 @@ class MainList extends React.Component {
                         <AutoCompleteSearchBox/>
                         <FilterOption/>
                     </div>
-                    <SinglePlaceItem university={university}/>
+                    <SinglePlaceItem university={university} placeList={placeList} />
                 </div>
             </section>
         );
@@ -40,7 +40,8 @@ class MainList extends React.Component {
 };
 
 MainList.propTypes = {
-    university: PropTypes.string
+    university: PropTypes.string,
+    placeList: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default MainList;

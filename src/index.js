@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import configureStore from './store/configureStore';
 import { Router, browserHistory } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux';
@@ -10,8 +11,14 @@ import 'flexboxgrid/css/flexboxgrid.css';
 
 injectTapEventPlugin();
 
+const store = configureStore();
+
+store.subscribe(() => {
+    console.log('state: ', store.getState());
+})
+
 const jsx = (
-    <Provider>
+    <Provider store={store}>
         <Router routes={routes} history={browserHistory} />
     </Provider>
 )

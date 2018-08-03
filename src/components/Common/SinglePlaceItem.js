@@ -8,156 +8,8 @@ import uni01 from '../../images/uni01.jpg'
 
 class SinglePlaceItem extends React.Component {
     render() {
-        const placeListData = [
-            {
-                img: 'uni01.jpg',
-                details: {
-                    placeName: 'Blk 12 Lorong 8',
-                    rank: '8.0',
-                    noReview: '14 reviews',
-                    distance: {
-                        walking: '60 min',
-                        bus: '30 min',
-                        driving: '15 min'
-                    },
-                    price: '$500',
-                    typeRoom: 'Sharing room',
-                    propertyOverview: [
-                        'wifi', 'gym'
-                    ],
-                    billIncluded: [
-                        'gas', 'wifi'
-                    ]
-                }
-            },
-            {
-                img: 'uni01.jpg',
-                details: {
-                    placeName: 'Blk 12 Lorong 8',
-                    rank: '8.0',
-                    noReview: '14 reviews',
-                    distance: {
-                        walking: '60 min',
-                        bus: '30 min',
-                        driving: '15 min'
-                    },
-                    price: '$500',
-                    typeRoom: 'Sharing room',
-                    propertyOverview: [
-                        'wifi', 'gym'
-                    ],
-                    billIncluded: [
-                        'gas', 'wifi'
-                    ]
-                }
-            },
-            {
-                img: 'uni01.jpg',
-                details: {
-                    placeName: 'Blk 12 Lorong 8',
-                    rank: '8.0',
-                    noReview: '14 reviews',
-                    distance: {
-                        walking: '60 min',
-                        bus: '30 min',
-                        driving: '15 min'
-                    },
-                    price: '$500',
-                    typeRoom: 'Sharing room',
-                    propertyOverview: [
-                        'wifi', 'gym'
-                    ],
-                    billIncluded: [
-                        'gas', 'wifi'
-                    ]
-                }
-            },
-            {
-                img: 'uni01.jpg',
-                details: {
-                    placeName: 'Blk 12 Lorong 8',
-                    rank: '8.0',
-                    noReview: '14 reviews',
-                    distance: {
-                        walking: '60 min',
-                        bus: '30 min',
-                        driving: '15 min'
-                    },
-                    price: '$500',
-                    typeRoom: 'Sharing room',
-                    propertyOverview: [
-                        'wifi', 'gym'
-                    ],
-                    billIncluded: [
-                        'gas', 'wifi'
-                    ]
-                }
-            },
-            {
-                img: 'uni01.jpg',
-                details: {
-                    placeName: 'Blk 12 Lorong 8',
-                    rank: '8.0',
-                    noReview: '14 reviews',
-                    distance: {
-                        walking: '60 min',
-                        bus: '30 min',
-                        driving: '15 min'
-                    },
-                    price: '$500',
-                    typeRoom: 'Sharing room',
-                    propertyOverview: [
-                        'wifi', 'gym'
-                    ],
-                    billIncluded: [
-                        'gas', 'wifi'
-                    ]
-                }
-            },,
-            {
-                img: 'uni01.jpg',
-                details: {
-                    placeName: 'Blk 12 Lorong 8',
-                    rank: '8.0',
-                    noReview: '14 reviews',
-                    distance: {
-                        walking: '60 min',
-                        bus: '30 min',
-                        driving: '15 min'
-                    },
-                    price: '$500',
-                    typeRoom: 'Sharing room',
-                    propertyOverview: [
-                        'wifi', 'gym'
-                    ],
-                    billIncluded: [
-                        'gas', 'wifi'
-                    ]
-                }
-            },
-            {
-                img: 'uni01.jpg',
-                details: {
-                    placeName: 'Blk 12 Lorong 8',
-                    rank: '8.0',
-                    noReview: '14 reviews',
-                    distance: {
-                        walking: '60 min',
-                        bus: '30 min',
-                        driving: '15 min'
-                    },
-                    price: '$500',
-                    typeRoom: 'Sharing room',
-                    propertyOverview: [
-                        'wifi', 'gym'
-                    ],
-                    billIncluded: [
-                        'gas', 'wifi'
-                    ]
-                }
-            },
-        ]
-
+        const {university, placeList} = this.props;
+        
         const styles = {
             wrapper: {
                 display: 'flex',
@@ -272,40 +124,43 @@ class SinglePlaceItem extends React.Component {
                 },
             }
         }
-        const {university} = this.props;
+        
         return (
             <div>
                 {
-                    placeListData.map((place, index) => {
+                    placeList.map((place, index) => {
                         return (
                             <div style={styles.wrapper}>
                                 <div style={styles.imgDiv.div}>
                                     <Link to={{
-                                        pathname: `${university}/${place.details.placeName}`,
+                                        pathname: `${university}/${place.name}`,
                                         state: {
                                             university,
-                                            placePath: `${university} / ${place.details.placeName}`
+                                            placePath: `${university} / ${place.name}`
                                         }
                                     }}>
-                                        <img style={styles.imgDiv.img} src={require(`../../images/${place.img}`)}/>
+                                        <img style={styles.imgDiv.img} src={place.imagePaths[0]}/>
                                     </Link>
                                 </div>
                                 <div style={styles.placeDiv.div}>
                                     <ul>
                                         <li style={styles.placeDiv.placeName}>
-                                            <Link
-                                                style={styles.link}
-                                                to={{
-                                                    pathname: `${university}/${place.details.placeName}`
-                                                }}
-                                            >
-                                                {place.details.placeName}
+                                            <Link style={{color: '#4c4c4c', textDecoration: 'none'}}
+                                            to={{
+                                                pathname: `${university}/${place.name}`,
+                                                state: {
+                                                    university,
+                                                    placePath: `${university} / ${place.name}`,
+                                                    placeName: `${place.name}`
+                                                }
+                                            }}>
+                                                {place.name}
                                             </Link>
                                         </li>
                                         <ul style={styles.ul}>
                                             <li style={styles.placeDiv.rank}>Rate: </li>
-                                            <li style={styles.placeDiv.rankValue}>{place.details.rank}</li>
-                                            <li style={styles.placeDiv.noReview}>({place.details.noReview})</li>
+                                            <li style={styles.placeDiv.rankValue}>8.0</li>
+                                            <li style={styles.placeDiv.noReview}>(14 reviews)</li>
                                         </ul>
                                         <li>
                                             <ul style={styles.ul}>
@@ -315,9 +170,9 @@ class SinglePlaceItem extends React.Component {
                                         </li>
                                         <li>
                                             <ul style={{...styles.ul, ...styles.placeDiv.distance}}>
-                                                <li><FontAwesomeIcon icon={faWalking} style={styles.placeDiv.icon}/>{place.details.distance.walking}</li>
-                                                <li><FontAwesomeIcon icon={faBus} style={styles.placeDiv.icon}/>{place.details.distance.bus}</li>
-                                                <li><FontAwesomeIcon icon={faCar} style={styles.placeDiv.icon}/>{place.details.distance.driving}</li>
+                                                <li><FontAwesomeIcon icon={faWalking} style={styles.placeDiv.icon}/>{place.walking}</li>
+                                                <li><FontAwesomeIcon icon={faBus} style={styles.placeDiv.icon}/>{place.bus}</li>
+                                                <li><FontAwesomeIcon icon={faCar} style={styles.placeDiv.icon}/>{place.driving}</li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -325,8 +180,6 @@ class SinglePlaceItem extends React.Component {
                                 <div style={styles.viewRoomDiv.div}>
                                     <ul style={styles.viewRoomDiv.ul}>
                                         <li style={styles.viewRoomDiv.receipt}><FontAwesomeIcon icon={faReceipt} style={styles.placeDiv.iconPointer}/></li>
-                                        <li style={styles.viewRoomDiv.from}>From</li>
-                                        <li style={styles.viewRoomDiv.price}>{place.details.price}</li>
                                         <li>
                                             <Link to="">
                                                 <FlatButton
@@ -348,7 +201,8 @@ class SinglePlaceItem extends React.Component {
 };
 
 SinglePlaceItem.propTypes = {
-    university: PropTypes.string
+    university: PropTypes.string,
+    img: PropTypes.string
 }
 
 export default SinglePlaceItem;

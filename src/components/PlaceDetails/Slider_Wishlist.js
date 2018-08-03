@@ -8,7 +8,7 @@ import {GridList, GridTile} from 'material-ui/GridList';
 
 class Slider_Wishlist extends React.Component {
     render() {
-
+        const {placeName} = this.props
         const styles = {
             wrapper: {
                 width: '100%',
@@ -67,13 +67,13 @@ class Slider_Wishlist extends React.Component {
 
         };
           
-        const imgData = ['uni01.jpg', 'uni02.jpg', 'uni03.jpg', 'uni04.jpg', 'uni05.jpg', 'uni06.jpg', 'uni07.jpg', 'uni08.jpg'];
+        const imgData = ['p01.jpeg', 'p02.jpeg', 'p03.jpeg', 'p04.jpeg', 'p05.jpeg', 'p06.jpeg', 'p07.jpeg', 'p08.jpeg'];
 
         return (
             <section style={styles.wrapper}>
                 <div style={styles.leftPart}>
                     <ul style={styles.ul01}>
-                        <li style={styles.placeName}>Blk 12 lorong 8</li>
+                        <li style={styles.placeName}>{placeName}</li>
                         <li>
                             <ul style={styles.ul02}>
                                 <li style={styles.rate}>Rate:</li>
@@ -112,5 +112,9 @@ class Slider_Wishlist extends React.Component {
         )
     }
 }
+Slider_Wishlist.propTypes = {
+    placeName: PropTypes.string
+}
+
 
 export default Slider_Wishlist;

@@ -1,10 +1,8 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {GridList, GridTile} from 'material-ui/GridList';
 import getImage from '../../utils/importImages';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
 import {Link} from 'react-router';
-
-
 
 class UniversityBanner extends React.Component {
 
@@ -32,7 +30,7 @@ class UniversityBanner extends React.Component {
       },
       gridList: {
         width: 1000,
-        height: 1000,
+        height: 800,
         marginLeft: 'auto',
         marginRight: 'auto'
       },
@@ -69,50 +67,40 @@ class UniversityBanner extends React.Component {
       },
       {
         img: 'uni02',
-        title: 'Tasty burger',
+        title: 'James Cook University',
       },
       {
         img: 'uni03',
-        title: 'Camera',
+        title: 'National University of Singapore',
       },
       {
         img: 'uni04',
-        title: 'Morning',
+        title: 'Kaplan Singapore',
       },
       {
         img: 'uni05',
-        title: 'Hats',
+        title: 'Singapore Institute of Management (SIM)',
       },
       {
         img: 'uni06',
-        title: 'Honey',
+        title: 'LASALLE College of the Arts',
       },
       {
         img: 'uni07',
-        title: 'Vegetables',
+        title: 'Singapore University of Technology and Design',
       },
       {
         img: 'uni08',
-        title: 'Water plant',
+        title: 'PSB Academy Singapore',
       },
       {
         img: 'uni09',
-        title: 'Water plant',
-      },
-      {
-        img: 'uni10',
-        title: 'Morning',
-      },
-      {
-        img: 'uni11',
-        title: 'Water plant',
-      },
-      {
-        img: 'uni12',
-        title: 'Morning',
+        title: 'TMC Academy',
       },
       
     ];
+
+    const { college } = this.props;
 
     return (
       <div>
@@ -122,27 +110,27 @@ class UniversityBanner extends React.Component {
         <div>
             <GridList
                 cols={3}
-                cellHeight={220}
+                cellHeight={240}
                 padding={26}
                 style={styles.gridList}
             >
-            {universityData.map((tile) => (
+            {college.map((item) => (
               <Link 
                 to={{
-                  pathname: `${tile.title}`,
+                  pathname: `${item.name}`,
                   state: {
-                    title: tile.title
+                    title: item.name,
                   }
                 }}
               >
                 <GridTile
                     style={styles.gridTile}
-                    key={tile.img}
-                    title={tile.title}
+                    key={item.name}
+                    title={item.name}
                     titleStyle={styles.gridTile_title}
                     onTouchTap={this.tileClick}
                     >
-                    <img src={getImage(tile.img)} />
+                    <img src={item.imagePath} />
                 </GridTile>
               </Link>
             ))}   
@@ -158,5 +146,9 @@ class UniversityBanner extends React.Component {
     )
   }
 };
+
+UniversityBanner.propTypes = {
+  college: PropTypes.object
+}
 
 export default UniversityBanner;

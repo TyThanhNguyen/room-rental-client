@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from "redux";
-import UpdateHeaderBackground from '../actions/HeaderBackground';
+import collegeReducer from '../reducers/collegeReducer';
+import placeListReducer from '../reducers/placeListReducer';
 
 export default () => {
     const store = createStore(
         combineReducers({
-            updateHeaderBackground: UpdateHeaderBackground,
+            college: collegeReducer,
+            placeList: placeListReducer,
         })
     );
     
