@@ -1,4 +1,5 @@
 export const addPlaceList = ({
+    placeId,
     name,
     imagePaths,
     walking,
@@ -7,6 +8,7 @@ export const addPlaceList = ({
 }) => ({
     type: 'ADD_PLACELIST',
     placeList: {
+        placeId,
         name,
         imagePaths,
         walking,

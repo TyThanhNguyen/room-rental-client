@@ -16,8 +16,9 @@ class PlaceListPage extends React.Component {
             axios.get(`http://localhost:3000/tenant/${encodeCollege}/places`).then((result) => {
                 console.log(result);
                 result.data.result.forEach((element) => {
-                    console.log(element)
+                    console.log('element: ', element);
                     this.props.dispatch(addPlaceList({
+                        placeId: element._id,
                         name: element.name,
                         imagePaths: element.imagePaths,
                         walking: element.distances[0].duration,
@@ -31,7 +32,8 @@ class PlaceListPage extends React.Component {
 
     render() {
         const {title} = this.props.location.state
-        const {placeList} = this.props;
+        const {placeList, placeId} = this.props;
+        console.log('placeList: ', placeList);
 
         const styles = {
             header: {
@@ -66,12 +68,14 @@ class PlaceListPage extends React.Component {
 };
 
 PlaceListPage.propTypes = {
+    placeId: PropTypes.string,
     title: PropTypes.string,
     placeList: PropTypes.arrayOf(PropTypes.object)
 }
 
 const mapStateToProp = (state) => ({
-    placeList: state.placeList
+    placeList: state.placeList,
+
 })
 
 export default connect(mapStateToProp)(PlaceListPage);

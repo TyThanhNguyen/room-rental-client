@@ -50,7 +50,6 @@ class About extends React.Component {
                             From iQ City, you can walk less than 20 minutes to class at the University of the Arts London or City University. Living in Zone 1 and with four tube stations within walking distance (Angel, Old Street, Barbican and Farringdon), you’ll also have almost all London universities and attractions less than a 20-minute train ride away from home.
                             </span>
                         </li>
-
                     </ul>
                 </div>
                 <div style={styles.bookingBtnDiv.wrapper}>

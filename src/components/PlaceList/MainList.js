@@ -32,7 +32,7 @@ class MainList extends React.Component {
                         <AutoCompleteSearchBox/>
                         <FilterOption/>
                     </div>
-                    <SinglePlaceItem university={university} placeList={placeList} />
+                    <SinglePlaceItem university={university} placeList={placeList}/>
                 </div>
             </section>
         );
@@ -41,7 +41,8 @@ class MainList extends React.Component {
 
 MainList.propTypes = {
     university: PropTypes.string,
-    placeList: PropTypes.arrayOf(PropTypes.object)
+    placeList: PropTypes.arrayOf(PropTypes.object),
+    placeId: PropTypes.string
 }
 
 export default MainList;

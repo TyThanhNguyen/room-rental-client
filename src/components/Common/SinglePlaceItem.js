@@ -8,7 +8,7 @@ import uni01 from '../../images/uni01.jpg'
 
 class SinglePlaceItem extends React.Component {
     render() {
-        const {university, placeList} = this.props;
+        const {university, placeList, placeId} = this.props;
         
         const styles = {
             wrapper: {
@@ -136,7 +136,9 @@ class SinglePlaceItem extends React.Component {
                                         pathname: `${university}/${place.name}`,
                                         state: {
                                             university,
-                                            placePath: `${university} / ${place.name}`
+                                            placePath: `${university} / ${place.name}`,
+                                            placeName: place.name,
+                                            placeId: place.placeId
                                         }
                                     }}>
                                         <img style={styles.imgDiv.img} src={place.imagePaths[0]}/>
@@ -151,7 +153,8 @@ class SinglePlaceItem extends React.Component {
                                                 state: {
                                                     university,
                                                     placePath: `${university} / ${place.name}`,
-                                                    placeName: `${place.name}`
+                                                    placeName: place.name,
+                                                    placeId: placeId
                                                 }
                                             }}>
                                                 {place.name}
@@ -202,7 +205,8 @@ class SinglePlaceItem extends React.Component {
 
 SinglePlaceItem.propTypes = {
     university: PropTypes.string,
-    img: PropTypes.string
+    img: PropTypes.string,
+    placeId: PropTypes.string
 }
 
 export default SinglePlaceItem;

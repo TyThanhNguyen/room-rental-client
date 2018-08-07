@@ -11,10 +11,38 @@ import Security from '../components/PlaceDetails/Security';
 import PropertyRule from '../components/PlaceDetails/PropertyRule';
 import Review from '../components/PlaceDetails/Review';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
+import axios from 'axios';
+import {connect} from 'react-redux';
+import { addPlaceDetails } from '../actions/placeDetails';
 
 class PlaceDetails extends React.Component {
+
+    componentDidMount() {
+        const {placeId} = this.props.location.state;
+        axios.get(`http://localhost:3000/tenant/place/${placeId}`).then((result) => {
+            console.log('place detail: ', result);
+            let placeDetails = result.data;
+            this.props.dispatch(addPlaceDetails({
+                image: placeDetails.imagePaths,
+                room: placeDetails.room,
+                facilities: placeDetails.facilities,
+                billIncluded: placeDetails.billIncluded,
+                securityAndSafety: placeDetails.securityAndSafety,
+                propertyRule: placeDetails.propertyRule,
+                placeId: placeDetails._id,
+                address: placeDetails.address,
+                description: placeDetails.description,
+                name: placeDetails.name
+            }));
+        }).catch((e) => {
+            console.log(e);
+        });
+    }
+
     render() {
-        const {placePath, placeName} = this.props.location.state;
+        const {placePath, placeName, placeId} = this.props.location.state;
+        const {placeDetails} = this.props;
+
         const styles = {
             header: {
                 backgroundColor: '#4c4c4c'
@@ -69,7 +97,7 @@ class PlaceDetails extends React.Component {
                 <Header styles={styles.header}/>
                 <Breadcumb path={placePath}/>
                 <div style={styles.wrapper.nestDiv}>
-                    <Slider_Wishlist placeName={placeName}/>
+                    <Slider_Wishlist placeName={placeName} placeId={placeId}/>
                 </div>
                 <NavBar/>
                 <div style={styles.about.wrapper}>
@@ -79,7 +107,7 @@ class PlaceDetails extends React.Component {
                 </div>
                 <div style={styles.roomOption.wrapper}>
                     <div style={styles.roomOption.content}>
-                        <RoomOption/>
+                        <RoomOption room={placeDetails.room}/>
                     </div>
                 </div>
                 <div style={styles.property.wrapper}>
@@ -102,7 +130,14 @@ class PlaceDetails extends React.Component {
 
 PlaceDetails.propTypes = {
     university: PropTypes.string,
-    placeName: PropTypes.string
+    placeName: PropTypes.string,
+    placePath: PropTypes.string,
+    placeId: PropTypes.string,
+    placeDetails: PropTypes.Object
 }
 
-export default PlaceDetails;
+const mapStateToProp = (state) => ({
+    placeDetails: state.placeDetails
+});
+
+export default connect(mapStateToProp)(PlaceDetails);
