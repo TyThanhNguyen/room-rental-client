@@ -4,6 +4,11 @@ import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
+import LoginPage from '../LoginPage';
+import SignupPage from '../SignupPage';
+import { connect } from 'react-redux';
+import { addAuthorizedUser } from '../../actions/signup';
+import ShowAuthUser from '../Common/ShowAuthUser';
 
 class Header extends React.Component {
 
@@ -11,6 +16,13 @@ class Header extends React.Component {
     loginOpen: false,
     signupOpen: false
   };
+
+  componentDidMount() {
+    const accessType = localStorage.getItem('client-accessType');
+    const token = localStorage.getItem('client-token');
+    const email = localStorage.getItem('client-email')
+    this.props.dispatch(addAuthorizedUser({accessType, token, email}));
+  }
 
   handleLoginOpen = () => {
     this.setState({loginOpen: true});
@@ -29,7 +41,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const {styles} = this.props;
+    const {styles, accessType, email, token} = this.props;
 
     const style = {
       appBar:{
@@ -45,31 +57,14 @@ class Header extends React.Component {
       },
     }
 
-    const signupAction = [
-      <FlatButton
-        label="Sign up"
-        primary={true}
-        keyboardFocused={true}
-        onTouchTap={this.handleSignupClose}
-      />,
-    ];
-
-    const loginAction = [
-      <FlatButton
-        label="Login"
-        primary={true}
-        keyboardFocused={true}
-        onTouchTap={this.handleLoginClose}
-      />,
-    ];
-
     return (
         <header>
             <AppBar showMenuIconButton={false}
               style={{...style.appBar.div, ...styles}}
-              title={<span style={style.title}>Logo</span>}
+                title={<Link to="/"><span style={style.title}>Logo</span></Link>}
               iconElementRight={
                 <div>
+                  {!accessType && 
                   <Link to="/hostdashboard">
                     <FlatButton 
                       hoverColor="transparent"
@@ -77,52 +72,44 @@ class Header extends React.Component {
                       style={style.appBar.flatButton}
                       label="Become a host"
                       />
-                  </Link>
+                  </Link>}
+                  {!accessType && 
                   <FlatButton 
                     hoverColor="transparent"
                     rippleColor="transparent"
-                    label="Help" />
+                    label="Help" />}
+                  {!accessType && 
                   <FlatButton 
                     hoverColor="transparent"
                     rippleColor="transparent"
                     onTouchTap={this.handleSignupOpen}
-                    label="Sign up" />
+                    label="Sign up" />}
+                  {!accessType && 
                   <FlatButton 
                     hoverColor="transparent"
                     rippleColor="transparent"
                     onTouchTap={this.handleLoginOpen}
                     label="Log in"
-                    />
+                    />}
+                  {accessType &&
+                    <ShowAuthUser email={email} accessType={accessType} token={token}/>
+                  }
                   <Dialog
-                    actions={signupAction}
                     modal={false}
                     open={this.state.signupOpen}
                     onRequestClose={this.handleSignupClose}
                   >
-                    <div>
-                      <TextField
-                        hintText="Email"
-                      />
-                      <br />
-                      <TextField
-                        hintText="Password"
-                      />
+                    <div style={{height: 300}}>
+                     <SignupPage/>
                     </div>
                   </Dialog>
                   <Dialog
-                    actions={loginAction}
                     modal={false}
                     open={this.state.loginOpen}
                     onRequestClose={this.handleLoginClose}
                   >
-                    <div>
-                      <TextField
-                        hintText="Email"
-                      />
-                      <br />
-                      <TextField
-                        hintText="Password"
-                      />
+                    <div style={{height: 300}}>
+                      <LoginPage/>
                     </div>
                   </Dialog>
                 </div>
@@ -135,6 +122,14 @@ class Header extends React.Component {
 
 Header.propTypes = {
   styles: PropTypes.object,
+  accessType: PropTypes.string,
+  email: PropTypes.string
 }
 
-export default Header;
+const mapPropToState = (state) => ({
+  accessType: state.authUser.accessType,
+  email: state.authUser.email,
+  token: state.authUser.token,
+})
+
+export default connect(mapPropToState)(Header);
